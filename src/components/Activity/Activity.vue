@@ -20,9 +20,9 @@
 
 <script>
 
-    import img1 from '../../assets/0951ad5c744a5a3f7ee01d2e5a9d5e90.mp4';
-    import img2 from '../../assets/b34c17a5e04fb74e38ab8f96335a8e03.mp4';
-    import img3 from '../../assets/c12.mp4';
+    import img1 from '../../assets/sample1.mp4';
+    import img2 from '../../assets/sample2.mp4';
+    import img3 from '../../assets/sample3.mp4';
 
 
     export default ({
@@ -67,7 +67,7 @@
 
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style scoped lang="scss">
     .example { /*親div*/
         position: relative; /*相対配置*/
 
@@ -105,10 +105,12 @@
             margin-bottom: 5vw;
             width: 85vw;
             height: 50vw;
-            border-radius: 20px;
+            border-radius: $border-radius;
             filter: brightness(60%);
-
         }
 
+    template {
+        background: $base-color;
+    }
 
 </style>
