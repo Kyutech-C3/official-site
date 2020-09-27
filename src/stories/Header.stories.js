@@ -5,9 +5,9 @@ export default {
     component: Header
 }
 
-const Primary = {
+const Primary = () => ({
     components: { Header },
-    template: '<Header />'
-}
+    template: '<Header></Header>'
+})
 
-export const Default = Primary.bind({})
+export const Default = Primary
