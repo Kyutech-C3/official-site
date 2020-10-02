@@ -76,14 +76,14 @@
     }
 
     .example {
-        margin: 0 auto;
+        margin: 0 auto; /* これいる */
         position: relative;
         margin-bottom: 5vw;
         overflow: hidden;
-        border-radius: 5vw;
-        width: 85vw;
-        height: 50vw;
-        max-height: 275px;
+        border-radius: $border-radius;
+        width: 85vw; /* videoのそれより小さく */
+        height: 50vw; /* videoのそれより小さく */
+        max-height: 275px; /* videoのそれより小さく */
     }
 
         
@@ -118,12 +118,12 @@
 
         .example video {
             object-fit: cover; /* この一行を追加するだけ！ */
-            width: calc(100% + 5vw);
-            height: 60vw;
-            margin: -10px;
-            border-radius: 5vw;
-            max-height: 300px;
-            filter: brightness(60%) blur(3px);
+            width: 100vw; /* exampleのそれより大きく */
+            height: 75vw; /* exampleのそれより大きく */
+            margin: -10px; /* これいる？ */
+            border-radius: calc($border-radius + 2vw);
+            max-height: 300px; /* exampleのそれより大きく */
+            filter: brightness(60%) blur(7px);
         }
 
 
