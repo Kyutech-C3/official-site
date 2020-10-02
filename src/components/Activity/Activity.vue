@@ -68,27 +68,43 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-    .example { /*親div*/
-        position: relative; /*相対配置*/
 
+    .Activity {
+
+
+        margin-top: 5vw;
     }
+
+    .example {
+        margin: 0 auto;
+        position: relative;
+        margin-bottom: 5vw;
+        overflow: hidden;
+        border-radius: 5vw;
+        width: 85vw;
+        height: 50vw;
+        max-height: 275px;
+    }
+
+        
 
         .example .xtex{
             position: absolute;
-            top: 25%;
+            top: 30%;
             left: 50%;
             -ms-transform: translate(-50%,-50%);
             -webkit-transform: translate(-50%,-50%);
-            font-size: 5vw; /*サイズ2倍*/
+            font-size: 5vw; 
          
             color: white; /*文字は白に*/
             transform: translate(-50%,-50%);
             margin: 0;
             padding: 0;
+
         }
         .example .ztex{
             position: absolute;
-            top: 45%;
+            top: 55%;
             left: 50%;
             -ms-transform: translate(-50%,-50%);
             -webkit-transform: translate(-50%,-50%);
@@ -102,12 +118,14 @@
 
         .example video {
             object-fit: cover; /* この一行を追加するだけ！ */
-            margin-bottom: 5vw;
-            width: 85vw;
-            height: 50vw;
-            border-radius: $border-radius;
-            filter: brightness(60%);
+            width: calc(100% + 5vw);
+            height: 60vw;
+            margin: -10px;
+            border-radius: 5vw;
+            max-height: 300px;
+            filter: brightness(60%) blur(3px);
         }
+
 
     template {
         background: $base-color;
