@@ -123,7 +123,7 @@
             margin: -10px; /* これいる？ */
             border-radius: calc($border-radius + 2vw);
             max-height: 300px; /* exampleのそれより大きく */
-            filter: brightness(60%) blur(7px);
+            filter: brightness(60%) blur(3px);
         }
 
 
