@@ -35,13 +35,13 @@ export default {
 </script>
 <style lang="scss" scoped>
 .container {
-  background-color: #ddd;
+  background-color: $base-color;
 }
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: $max-width) {
   .container {
     margin-left: 50%;
     transform: translateX(-50%);
-    width: 1024px;
+    width: $max-width;
   }
 }
 </style>
