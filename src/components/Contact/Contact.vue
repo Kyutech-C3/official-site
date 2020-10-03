@@ -11,19 +11,24 @@
         </div>
       </div>
     </div>
+
     <div :class="{on: isActive}" id="content">
       <form name="Form" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSf3EvzAo-J6GaAaqs1b96CKOl-W7-j55ZMPAaADcLS3PXNyyw/formResponse" target="dummyIframe" @submit="fvalidate">
-        <label for="name">氏名*</label>
-        <input id="name" type="text" name="entry.240185004" v-model="fname" required>
-        <br>
-        <label for="email">メールアドレス*</label>
-        <input id="email" type="text" name="entry.503816471" placeholder="example@mail.co.jp" v-model="mail" required>
-        <br>
-        <label for="msg">お問い合わせ内容*</label>
-        <textarea id="msg" name="entry.1170722932" placeholder="お気軽にお問い合わせください。" v-model="msg" required></textarea>
-        <br>
-        <button name="button" type="submit" value="Submit">送信</button>
+        <div class="item">
+          <label for="name" id="mrgs">氏名*</label>
+          <input id="name" type="text" name="entry.240185004" v-model="fname" required>
+        </div>
+        <div class="item">
+          <label for="email" id="mrgm">メールアドレス*</label>
+          <input id="email" type="text" name="entry.503816471" placeholder="example@mail.co.jp" v-model="mail" required>
+        </div>
+        <div class="item">
+          <label for="msg" id=mrgm>お問い合わせ内容*</label>
+          <textarea id="msg" name="entry.1170722932" placeholder="お気軽にお問い合わせください。" v-model="msg" required></textarea>
+        </div>
+        <button name="button" type="submit" value="Submit" id="subm">送信</button>
       </form>
+      
       <iframe name="dummyIframe" style="display:none;"></iframe>
 
       <div id="thxMessage" :class="{Fon: formAccept}">お問い合わせありがとうございました。</div>
@@ -61,9 +66,7 @@ export default{
           }, 3000);
         }
 
-        document.Form.submit();
         return true;
-
       } else {
         return false;
       }
@@ -79,17 +82,12 @@ export default{
   text-align: center;
 }
 
-#Container {
-  /*display: flex;
-  justify-content: center;
-  border: 4px solid;*/
-}
 
 #title {
   text-decoration: underline;
 }
 
-#form {
+p#form {
   margin: auto 0;
   margin-right: 10px;
 }
@@ -126,12 +124,13 @@ export default{
   height: 0;
   transition: 1s;
   overflow: hidden;
+  border-radius: $border-radius;
+  background-color: #b5fff7;
 }
+
 #content.on{
   height: auto;
   padding: 20px;
-  border: 4px solid;
-  border-radius: $border-radius;
 }
 
 img.on{
@@ -146,6 +145,20 @@ img.on{
 
 #thxMessage.Fon {
   opacity: 1;
+}
+
+.item {
+  text-align: left;
+  display: flex;
+  justify-content: center;
+  margin: 10px 10px;
+}
+
+label#mrgs {
+  margin-right: 100px;
+}
+label#mrgm {
+  margin-right: 20px;
 }
 
 </style>
