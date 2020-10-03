@@ -1,17 +1,12 @@
 ﻿<template>
-    <div class="Activity">
+    <div style="margin-top:5vw;">
 
-            <div class="example" v-for="item in items" :key="item">
-                <div>
-                    <video muted autoplay loop name="media">
-                        <source :src="item.movie" type="video/webm">
-                    </video>
-                </div>
-                <div style="text-align:center;">
-                    <h1 class="xtex">{{item.message}}</h1>
-                    <h6 class="ztex">{{item.description}}</h6>
-                </div>
-            </div>
+        <div v-for="item in items" :key="item">
+
+            <_Activity :movie="item.movie" :message="item.message" :desc="item.description"></_Activity>
+
+        </div>
+
 
     </div>
 
@@ -23,10 +18,16 @@
     import img1 from '../../assets/sample1.mp4';
     import img2 from '../../assets/sample2.mp4';
     import img3 from '../../assets/sample3.mp4';
-
+    import _Activity from "./_Activity.vue";
 
     export default ({
         name: 'Activity',
+
+        components: {
+            // componentsプロパティにItemコンポーネントをセットして
+            // template内でItemコンポーネントが利用できるようにしています。
+            _Activity,
+        },
 
         data() {
 
@@ -66,85 +67,4 @@
 </script>
 
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss">
 
-    .Activity {
-
-
-        margin-top: 5vw;
-    }
-
-    .example {
-        margin: 0 auto; /* これいる */
-        position: relative;
-        margin-bottom: 5vw;
-        overflow: hidden;
-        border-radius: $border-radius;
-        width: 85vw; /* videoのそれより小さく */
-        height: 40vw; /* videoのそれより小さく */
-        max-height: 300px; /* videoのそれより小さく */
-    }
-
-        
-
-        .example .xtex{
-            position: absolute;
-            top: 30%;
-            left: 50%;
-            -ms-transform: translate(-50%,-50%);
-            -webkit-transform: translate(-50%,-50%);
-            font-size: 5vw; 
-            
-            color: white; /*文字は白に*/
-            transform: translate(-50%,-50%);
-            margin: 0;
-
-            padding: 0;
-
-        }
-
-
-    @media (min-width: 1100px) {
-        .example .xtex {
-            font-size: 52px;
-        }
-    }
-
-        .example .ztex {
-            position: absolute;
-            top: 60%;
-            left: 50%;
-            -ms-transform: translate(-50%,-50%);
-            -webkit-transform: translate(-50%,-50%);
-            font-size: 3vw;
-            color: white; /*文字は白に*/
-            transform: translate(-50%,-50%);
-            margin: 0;
-            padding: 0;
-            width: 65vw;
-            margin-top: 2vw;
-        }
-
-    @media (min-width: 1100px) {
-        .example .ztex {
-            font-size: 24px;
-        }
-    }
-
-        .example video {
-            object-fit: cover; /* この一行を追加するだけ！ */
-            width: 90vw; /* exampleのそれより大きく */
-            height: 55vw; /* exampleのそれより大きく */
-            margin: -10px; /* これいる？ */
-            border-radius: calc($border-radius + 2vw);
-            max-height: 310px; /* exampleのそれより大きく */
-            filter: brightness(60%) blur(3px);
-        }
-
-
-        template {
-            background: $base-color;
-        }
-
-</style>
