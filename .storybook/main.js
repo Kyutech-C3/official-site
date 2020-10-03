@@ -7,7 +7,8 @@ module.exports = {
   ],
   "addons": [
     "@storybook/addon-links",
-    "@storybook/addon-essentials"
+    "@storybook/addon-essentials",
+    "@storybook/addon-knobs"
   ],
   webpackFinal: (config) => {
     const variablesScss = fs.readFileSync(path.resolve(__dirname, "../src/styles/_variables.scss")).toString()
