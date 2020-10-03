@@ -82,8 +82,8 @@
         overflow: hidden;
         border-radius: $border-radius;
         width: 85vw; /* videoのそれより小さく */
-        height: 50vw; /* videoのそれより小さく */
-        max-height: 275px; /* videoのそれより小さく */
+        height: 40vw; /* videoのそれより小さく */
+        max-height: 300px; /* videoのそれより小さく */
     }
 
         
@@ -95,40 +95,56 @@
             -ms-transform: translate(-50%,-50%);
             -webkit-transform: translate(-50%,-50%);
             font-size: 5vw; 
-         
+            
             color: white; /*文字は白に*/
             transform: translate(-50%,-50%);
             margin: 0;
+
             padding: 0;
 
         }
-        .example .ztex{
+
+
+    @media (min-width: 1100px) {
+        .example .xtex {
+            font-size: 52px;
+        }
+    }
+
+        .example .ztex {
             position: absolute;
-            top: 55%;
+            top: 60%;
             left: 50%;
             -ms-transform: translate(-50%,-50%);
             -webkit-transform: translate(-50%,-50%);
-            font-size: 3vw; /*サイズ2倍*/
+            font-size: 3vw;
             color: white; /*文字は白に*/
             transform: translate(-50%,-50%);
             margin: 0;
             padding: 0;
             width: 65vw;
+            margin-top: 2vw;
         }
+
+    @media (min-width: 1100px) {
+        .example .ztex {
+            font-size: 24px;
+        }
+    }
 
         .example video {
             object-fit: cover; /* この一行を追加するだけ！ */
-            width: 100vw; /* exampleのそれより大きく */
-            height: 75vw; /* exampleのそれより大きく */
+            width: 90vw; /* exampleのそれより大きく */
+            height: 55vw; /* exampleのそれより大きく */
             margin: -10px; /* これいる？ */
             border-radius: calc($border-radius + 2vw);
-            max-height: 300px; /* exampleのそれより大きく */
+            max-height: 310px; /* exampleのそれより大きく */
             filter: brightness(60%) blur(3px);
         }
 
 
-    template {
-        background: $base-color;
-    }
+        template {
+            background: $base-color;
+        }
 
 </style>
