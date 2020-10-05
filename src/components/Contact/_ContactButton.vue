@@ -33,8 +33,13 @@ img.on{
   margin: 0 auto;
   cursor: pointer;
   overflow: hidden;
-  border: 4px solid;
+/*  border: 4px solid; */
   border-radius: $border-radius;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: $brand-color;
+  background-color: #702f0c;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, .5);
 }
 
 #zoom {
@@ -50,8 +55,6 @@ img.on{
 }
 
 #zoom:hover {
-  color: #00ff00;
-
   transform: scale(1.2,1.2);
 }
 </style>

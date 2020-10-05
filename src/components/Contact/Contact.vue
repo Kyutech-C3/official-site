@@ -7,18 +7,21 @@
 
     <div :class="{on: isActive}" id="content">
       <form name="Form" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSf3EvzAo-J6GaAaqs1b96CKOl-W7-j55ZMPAaADcLS3PXNyyw/formResponse" target="dummyIframe" @submit="fvalidate">
-        <div class="item">
-          <label for="name" class="mrgs">氏名*</label>
-          <input id="name" type="text" name="entry.240185004" v-model="fname" required>
-        </div>
-        <div class="item">
-          <label for="email" class="mrgm">メールアドレス*</label>
-          <input id="email" type="text" name="entry.503816471" placeholder="example@mail.co.jp" v-model="mail" required>
-        </div>
-        <div class="item">
-          <label for="msg" class=mrgm>お問い合わせ内容*</label>
-          <textarea id="msg" name="entry.1170722932" placeholder="お気軽にお問い合わせください。" v-model="msg" required></textarea>
-        </div>
+        <table>
+          <tr>
+            <td class="label">氏名*</td>
+            <td class="textbox"><input class="input" type="text" name="entry.240185004" v-model="fname" required></td>
+          </tr>
+          <tr>
+            <td class="label">メールアドレス*</td>
+            <td class="textbox"><input class="input" type="text" name="entry.503816471" placeholder="example@mail.co.jp" v-model="mail" required></td>
+          </tr>
+          <tr>
+            <td class="label">お問い合わせ内容*</td>
+            <td class="textbox"><textarea name="entry.1170722932" placeholder="お気軽にお問い合わせください。" v-model="msg" required></textarea></td>
+          </tr>
+        </table>
+
         <button name="button" type="submit" value="Submit" id="subm">送信</button>
       </form>
 
@@ -72,8 +75,8 @@ export default{
 </script>
 
 <style lang="scss">
-
 #main {
+  padding: 20px;
   text-align: center;
 }
 
@@ -82,12 +85,13 @@ export default{
 }
 
 #content {
+
   margin-top: 10px;
   height: 0;
   transition: 1s;
   overflow: hidden;
-  border-radius: $border-radius;
-  background-color: #b5fff7;
+/*  border-radius: $border-radius; */
+  background-color: white;
 }
 
 #content.on{
@@ -105,20 +109,39 @@ export default{
   opacity: 1;
 }
 
-.item {
+table {
+  margin: 0 auto;
+}
+
+.label {
   text-align: left;
-  display: flex;
-  justify-content: center;
-  margin: 10px 10px;
 }
 
-label.mrgs {
-  margin-right: 100px;
-}
-label.mrgm {
-  margin-right: 20px;
+.textbox {
+  text-align: right;
 }
 
+@media (min-width: 600px) {
+  #content {
+    width: 500px;
+    margin: 0 auto;
+    margin-top: 20px;
+  }
 
+  .input {
+    width: 200px;
+    height: 30px;
+  }
+
+  table {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 599px) {
+  #content {
+    margin: 20px 5px auto;
+  }
+}
 
 </style>
