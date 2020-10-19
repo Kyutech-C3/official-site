@@ -48,12 +48,11 @@ export default {
     description: "",
     date: "",
   }),
-  created: function() {
+  created: function () {
     this.db = firebase.firestore();
   },
   methods: {
-    addNews: function() {
-      // eslint-disable-next-line no-unused-vars
+    addNews: function () {
       var _this = this;
       this.db
         .collection("news")
@@ -62,11 +61,11 @@ export default {
           description: _this.description,
           date: _this.date,
         })
-        .then(function() {
+        .then(function () {
           _this.title = "";
           _this.description = "";
         })
-        .catch(function() {
+        .catch(function () {
           console.log("err");
         });
     },
