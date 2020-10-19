@@ -33,7 +33,7 @@ export default {
           (user) => {
             console.log(user);
             alert("サインイン成功です。");
-            this.$router.push("/success");
+            this.$router.push("/news");
           },
           (error) => {
             alert(error.message);

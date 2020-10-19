@@ -12,4 +12,4 @@ const firebaseApp = firebase.initializeApp({
   measurementId: "G-S3HT2Z6MX7"
 });
 
-export const Newsdb = firebaseApp.firestore().collection('news');
+export const Newsdb = firebaseApp.firestore();
