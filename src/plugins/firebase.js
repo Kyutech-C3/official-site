@@ -13,4 +13,4 @@ const firebaseApp = firebase.initializeApp({
 });
 
 export default firebase
-export const Newsdb = firebaseApp.firestore();
+export const Newsdb = firebaseApp.firestore().collection('news');

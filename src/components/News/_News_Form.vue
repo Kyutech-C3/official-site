@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-form ref="form" v-model="valid" lazy-validation>
+    <form>
       <p>タイトルを入力してください</p>
       <input v-model="title" placeholder="タイトル" class="title" required />
       <br />
@@ -28,16 +28,18 @@
         type="file"
         name="example"
         accept="image/jpeg, image/png"
+        @change="setImage"
         required
       />
       <br />
-      <button @click="addNews">投稿</button>
-    </v-form>
+    </form>
+    <button @click="addNews">投稿</button>
   </div>
 </template>
 
 <script>
-import firebase from "firebase";
+import { Newsdb } from "../../plugins/firebase.js";
+import { storage } from "../../plugins/firestorage.js";
 import "firebase/firestore";
 
 export default {
@@ -47,27 +49,50 @@ export default {
     title: "",
     description: "",
     date: "",
+    img: null,
+    imgURL: "",
   }),
-  created: function () {
-    this.db = firebase.firestore();
-  },
   methods: {
-    addNews: function () {
-      var _this = this;
-      this.db
-        .collection("news")
-        .add({
-          title: _this.title,
-          description: _this.description,
-          date: _this.date,
-        })
-        .then(function () {
-          _this.title = "";
-          _this.description = "";
-        })
-        .catch(function () {
-          console.log("err");
+    addNews() {
+      if (this.title !== "" && this.description !== "" && this.date !== "") {
+        var _this = this;
+        const nowAt = new Date().getTime();
+        const uploadTask = storage
+          .ref()
+          .child(`news/${nowAt}${_this.img[0].name}`);
+        console.log(_this.img[0].name);
+        uploadTask.put(_this.img[0]).then((snapshot) => {
+          snapshot.ref
+            .getDownloadURL()
+            .then(async (downloadURL) => {
+              _this.imgURL = downloadURL;
+            })
+            .then(function () {
+              Newsdb.add({
+                title: _this.title,
+                description: _this.description,
+                date: _this.date,
+                imageURL: _this.imgURL,
+              });
+            })
+            .then(function () {
+              _this.title = "";
+              _this.description = "";
+              _this.date = "";
+            })
+            .catch(function () {
+              console.log("err");
+            });
         });
+      } else {
+        alert("記入していない部分があります");
+      }
+    },
+    setImage: function (e) {
+      e.preventDefault();
+      var file = e.target.files;
+      console.log(file);
+      this.img = file;
     },
     console() {
       console.log(this.date);
