@@ -50,7 +50,7 @@ export default {
     description: "",
     date: "",
     img: null,
-    imgURL: "",
+    imageURL: "",
   }),
   methods: {
     addNews() {
@@ -65,22 +65,23 @@ export default {
           snapshot.ref
             .getDownloadURL()
             .then(async (downloadURL) => {
-              _this.imgURL = downloadURL;
+              _this.imageURL = downloadURL;
             })
-            .then(function () {
+            .then(function() {
               Newsdb.add({
                 title: _this.title,
                 description: _this.description,
                 date: _this.date,
-                imageURL: _this.imgURL,
+                imageURL: _this.imageURL,
               });
             })
-            .then(function () {
+            .then(function() {
               _this.title = "";
               _this.description = "";
               _this.date = "";
+              _this.img = null;
             })
-            .catch(function () {
+            .catch(function() {
               console.log("err");
             });
         });
@@ -88,7 +89,7 @@ export default {
         alert("記入していない部分があります");
       }
     },
-    setImage: function (e) {
+    setImage: function(e) {
       e.preventDefault();
       var file = e.target.files;
       console.log(file);
