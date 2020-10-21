@@ -34,6 +34,7 @@
       <br />
       <button @click="close">戻る</button>
       <button @click="updateNews">保存</button>
+      <button @click="deleteNews">削除</button>
     </div>
   </div>
 </template>
@@ -75,6 +76,18 @@ export default {
     },
     close() {
       this.showContent = false;
+    },
+    async deleteNews() {
+      var _this = this;
+      const updateRef = Newsdb.doc(_this.data.id);
+      await updateRef
+        .delete()
+        .then(() => {
+          this.showContent = false;
+        })
+        .catch(function() {
+          console.log("err");
+        });
     },
   },
 };
