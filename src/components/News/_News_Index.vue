@@ -1,10 +1,13 @@
 <template>
   <div>
     <div v-for="(news, number) in index" :key="number">
-      <li>
-        {{ news.title }}
-        <img :src="news.imageURL" @click="openModal(news)" />
-      </li>
+      <NewsCard
+        :title="news.title"
+        :description="news.description"
+        :imageUrl="news.imageURL"
+        :date="news.date"
+        @parent-event="openModal(news)"
+      />
     </div>
     <Modal :index="postItem" ref="modal" />
     <button @click="console">open</button>
@@ -14,6 +17,8 @@
 <script>
 import firebase from "firebase";
 import Modal from "./_News_UpdateForm.vue";
+import NewsCard from "./_NewsCard.vue";
+
 export default {
   name: "Index",
   data() {
@@ -53,6 +58,7 @@ export default {
   },
   components: {
     Modal,
+    NewsCard,
   },
 };
 </script>
