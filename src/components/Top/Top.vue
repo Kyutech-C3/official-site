@@ -19,7 +19,7 @@ export default {
         let logo=document.querySelector('.C3logo')
         setTimeout(() => {
             logo.classList.remove('C3logo-animate')
-        }, 1600);
+        }, 800);
     }
 }
 </script>
@@ -27,19 +27,21 @@ export default {
 <style lang="scss" scoped>
 
 @keyframes lanimate {
-    0%   { transform: scale(0.9, 0.9) translate(-640%, 0%) rotate(0deg); }
-    10%  { transform: scale(0.9, 0.9) translate(-560%, 0%) rotate(90deg); }
-    20%  { transform: scale(0.9, 0.9) translate(-480%, 0%) rotate(180deg); }
-    30%  { transform: scale(0.9, 0.9) translate(-400%, 0%) rotate(270deg); }
-    40%  { transform: scale(0.9, 0.9) translate(-320%, 0%) rotate(360deg); }
-    50%  { transform: scale(0.9, 0.9) translate(-240%, 0%) rotate(450deg); }
-    60%  { transform: scale(0.9, 0.9) translate(-160%, 0%) rotate(540deg); }
-    70%  { transform: scale(0.9, 0.9) translate(-80%, 0%) rotate(630deg); }
-    80%  { transform: scale(0.9, 0.9) translate(0%, 0%) rotate(720deg); }
-    85%  { transform: scale(0.7, 1.3) translate(5%, 0%) rotate(720deg); }
-    90%  { transform: scale(0.9, 0.9) translate(0%, 0%) rotate(720deg); }
-    95%  { transform: scale(1.3, 0.7) translate(0%, 5%) rotate(720deg); }
-    100% { transform: scale(1.0, 1.0) translate(0%, 0%) rotate(720deg); }
+    0%   { transform: scale(0.9, 0.9) translate(-900px, 0px) rotate(0turn); }
+    80%  { transform: scale(2, 2) translate(0px, 0px) rotate(100turn); }
+    85%  { transform: scale(0.6, 1.4) translate(20px, 0px); }
+    90%  { transform: scale(0.9, 0.9) translate(0px, 0px); }
+    95%  { transform: scale(1.4, 0.6) translate(0px, 5%); }
+    100% { transform: scale(1.0, 1.0) translate(0px, 0px); }
+}
+
+@keyframes lanimate1 {
+    0%   { transform: scale(7, 7) translate(0px, 40px) rotate(0turn); }
+    80%  { transform: scale(0.5, 0.5) translate(0px, 0px) rotate(30turn); }
+    85%  { transform: scale(0.6, 1.4) translate(0px, 0px); }
+    90%  { transform: scale(0.9, 0.9) translate(0px, 0px); }
+    95%  { transform: scale(1.4, 0.6) translate(0px, 0px); }
+    100% { transform: scale(1.0, 1.0) translate(0px, 0px); }
 }
 
 
@@ -83,14 +85,14 @@ p{
 }
 
 .C3logo-animate {
-    -webkit-animation: lanimate linear 1.6s 0s 1;
-	animation: lanimate linear 1.6s 0s 1;
+    -webkit-animation: lanimate1 linear 0.8s 0s 1;
+	animation: lanimate1 linear 0.8s 0s 1;
 }
 
 .C3logo {
     border-radius: 50%;
-    width:100px;
-    height:100px;
+    width:120px;
+    height:120px;
     margin-bottom: 0px;
     margin-top: 50px;
     padding:0px;
