@@ -3,7 +3,7 @@
 
         <div v-for="item in items" :key="item">
 
-            <_Activity :movie="item.movie" :message="item.message" :desc="item.description"></_Activity>
+            <ActivityCard :movie="item.movie" :message="item.message" :desc="item.description"></ActivityCard>
 
         </div>
 
@@ -18,7 +18,7 @@
     import img1 from '../../assets/sample1.mp4';
     import img2 from '../../assets/sample2.mp4';
     import img3 from '../../assets/sample3.mp4';
-    import _Activity from "./_Activity.vue";
+    import ActivityCard from "./_Activity.vue";
 
     export default ({
         name: 'Activity',
@@ -26,7 +26,7 @@
         components: {
             // componentsプロパティにItemコンポーネントをセットして
             // template内でItemコンポーネントが利用できるようにしています。
-            _Activity,
+            ActivityCard,
         },
 
         data() {

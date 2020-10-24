@@ -20,7 +20,7 @@
 
 <script>
     export default {
-        name: '_Activity',
+        name: 'ActivityCard',
         props: ['movie', 'message', 'desc'],
     };
 </script>
@@ -96,7 +96,7 @@
         width: 120vw; /* example‚Ì‚»‚ê‚æ‚è‘å‚«‚­ */
         height: 50vw; /* example‚Ì‚»‚ê‚æ‚è‘å‚«‚­ */
         margin: -10px; /* ‚±‚ê‚¢‚éH */
-        border-radius: calc($border-radius + 2vw);
+        border-radius: $border-radius;
         max-height: 310px; /* example‚Ì‚»‚ê‚æ‚è‘å‚«‚­ */
         filter: brightness(60%) blur(3px);
     }
