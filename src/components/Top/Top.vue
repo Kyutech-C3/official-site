@@ -26,24 +26,6 @@ export default {
 
 <style lang="scss" scoped>
 
-@keyframes lanimate {
-    0%   { transform: scale(0.9, 0.9) translate(-900px, 0px) rotate(0turn); }
-    80%  { transform: scale(2, 2) translate(0px, 0px) rotate(100turn); }
-    85%  { transform: scale(0.6, 1.4) translate(20px, 0px); }
-    90%  { transform: scale(0.9, 0.9) translate(0px, 0px); }
-    95%  { transform: scale(1.4, 0.6) translate(0px, 5%); }
-    100% { transform: scale(1.0, 1.0) translate(0px, 0px); }
-}
-
-@keyframes lanimate1 {
-    0%   { transform: scale(7, 7) translate(0px, 40px) rotate(0turn); }
-    80%  { transform: scale(0.5, 0.5) translate(0px, 0px) rotate(30turn); }
-    85%  { transform: scale(0.6, 1.4) translate(0px, 0px); }
-    90%  { transform: scale(0.9, 0.9) translate(0px, 0px); }
-    95%  { transform: scale(1.4, 0.6) translate(0px, 0px); }
-    100% { transform: scale(1.0, 1.0) translate(0px, 0px); }
-}
-
 
 @-webkit-keyframes fluffy {
 	0%   { -webkit-transform: scale(1.0, 1.0) translate(0%, 0%); }
@@ -85,8 +67,8 @@ p{
 }
 
 .C3logo-animate {
-    -webkit-animation: lanimate1 linear 0.8s 0s 1;
-	animation: lanimate1 linear 0.8s 0s 1;
+    -webkit-animation: lfluffy linear 0.8s 0s 1;
+	animation: fluffy linear 0.8s 0s 1;
 }
 
 .C3logo {
