@@ -6,13 +6,13 @@
 </template>
 
 <script>
-import NewsFrom from "./_News_Form.vue";
-import NewsIndex from './_News_Index.vue'
+import NewsFrom from "./_NewsForm.vue";
+import NewsIndex from "./_NewsIndex.vue";
 
 export default {
   components: {
     NewsFrom,
-    NewsIndex
+    NewsIndex,
   },
 };
 </script>

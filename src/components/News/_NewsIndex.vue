@@ -16,7 +16,7 @@
 
 <script>
 import firebase from "firebase";
-import Modal from "./_News_UpdateForm.vue";
+import Modal from "./_NewsUpdateForm.vue";
 import NewsCard from "./_NewsCard.vue";
 
 export default {
@@ -41,15 +41,15 @@ export default {
       console.log(this.index);
     },
   },
-  created: function() {
+  created: function () {
     this.db = firebase.firestore();
     var _this = this;
     this.db
       .collection("news")
       .orderBy("date", "desc")
-      .onSnapshot(function(querySnapshot) {
+      .onSnapshot(function (querySnapshot) {
         _this.index = [];
-        querySnapshot.forEach(function(doc) {
+        querySnapshot.forEach(function (doc) {
           var data = doc.data();
           data.id = doc.id;
           _this.index.push(data);
