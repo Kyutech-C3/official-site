@@ -68,7 +68,7 @@ export default {
           .then(() => {
             this.showContent = false;
           })
-          .catch(function() {
+          .catch(function () {
             console.log("err");
           });
       } else {
@@ -86,7 +86,7 @@ export default {
         .then(() => {
           this.showContent = false;
         })
-        .catch(function() {
+        .catch(function () {
           console.log("err");
         });
     },

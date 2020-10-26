@@ -10,7 +10,6 @@
       />
     </div>
     <Modal :index="postItem" ref="modal" />
-    <button @click="console">open</button>
   </div>
 </template>
 
@@ -36,9 +35,6 @@ export default {
     },
     closeModal() {
       this.showContent = false;
-    },
-    console() {
-      console.log(this.index);
     },
   },
   created: function () {

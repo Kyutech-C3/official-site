@@ -1,7 +1,8 @@
 <template>
   <div>
+    <button @click="openForm">新規投稿</button>
     <NewsIndex />
-    <NewsFrom />
+    <NewsFrom ref="form" />
   </div>
 </template>
 
@@ -13,6 +14,11 @@ export default {
   components: {
     NewsFrom,
     NewsIndex,
+  },
+  methods: {
+    openForm() {
+      this.$refs.form.showContent = true;
+    },
   },
 };
 </script>

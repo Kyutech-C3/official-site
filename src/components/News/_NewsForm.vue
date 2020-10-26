@@ -1,39 +1,43 @@
 <template>
-  <div>
-    <form>
-      <p>タイトルを入力してください</p>
-      <input v-model="title" placeholder="タイトル" class="title" required />
-      <br />
-      <p>Newsの内容を入力してください</p>
-      <textarea
-        v-model="description"
-        placeholder="内容"
-        class="description"
-        cols="30"
-        rows="5"
-        required
-      ></textarea>
-      <br />
-      <p>開催日時を教えてください</p>
-      <input
-        type="date"
-        name="num01"
-        autocomplete="off"
-        v-model="date"
-        required
-      />
-      <br />
-      <p>画像を挿入してください</p>
-      <input
-        type="file"
-        name="example"
-        accept="image/jpeg, image/png"
-        @change="setImage"
-        required
-      />
-      <br />
-    </form>
-    <button @click="addNews">投稿</button>
+  <div id="overlay" v-show="showContent">
+    <div id="content">
+      <form>
+        <p>タイトルを入力してください</p>
+        <input v-model="title" placeholder="タイトル" class="title" required />
+        <br />
+        <p>Newsの内容を入力してください</p>
+        <textarea
+          v-model="description"
+          placeholder="内容"
+          class="description"
+          cols="30"
+          rows="5"
+          required
+        ></textarea>
+        <br />
+        <p>開催日時を教えてください</p>
+        <input
+          type="date"
+          name="num01"
+          autocomplete="off"
+          v-model="date"
+          required
+        />
+        <br />
+        <p>画像を挿入してください</p>
+        <input
+          type="file"
+          name="example"
+          accept="image/jpeg, image/png"
+          @change="setImage"
+          required
+        />
+        <br />
+      </form>
+      <button @click="showContent = false">戻る</button>
+      <button @click="addNews">投稿</button>
+    </div>
+    <div id="modal_bg" v-show="showContent" @click="showContent = false"></div>
   </div>
 </template>
 
@@ -44,6 +48,7 @@ import "firebase/firestore";
 
 export default {
   data: () => ({
+    showContent: false,
     db: null,
     valid: true,
     title: "",
@@ -81,6 +86,9 @@ export default {
               _this.date = "";
               _this.img = null;
             })
+            .then(() => {
+              this.showContent = false;
+            })
             .catch(function () {
               console.log("err");
             });
@@ -113,5 +121,30 @@ export default {
 }
 button {
   margin: 10px;
+}
+#overlay {
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#modal_bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+#content {
+  z-index: 2;
+  width: 50%;
+  padding-top: 5em;
+  padding-bottom: 5em;
+  text-align: center;
+  background-color: white;
 }
 </style>
