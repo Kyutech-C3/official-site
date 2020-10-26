@@ -36,6 +36,7 @@
       <button @click="updateNews">保存</button>
       <button @click="deleteNews">削除</button>
     </div>
+    <div id="modal_bg" v-show="showContent" @click="showContent = false"></div>
   </div>
 </template>
 
@@ -116,6 +117,11 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+#modal_bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 #content {
   z-index: 2;
