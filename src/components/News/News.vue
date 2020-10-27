@@ -2,17 +2,17 @@
   <div>
     <button @click="openForm">新規投稿</button>
     <NewsIndex />
-    <NewsFrom ref="form" />
+    <NewsForm ref="form" />
   </div>
 </template>
 
 <script>
-import NewsFrom from "./_NewsForm.vue";
+import NewsForm from "./_NewsForm.vue";
 import NewsIndex from "./_NewsIndex.vue";
 
 export default {
   components: {
-    NewsFrom,
+    NewsForm,
     NewsIndex,
   },
   methods: {
