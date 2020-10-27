@@ -15,8 +15,8 @@
 
 <script>
 import firebase from "firebase";
-import Modal from "./_NewsUpdateForm.vue";
-import NewsCard from "./_NewsCard.vue";
+import Modal from "./__NewsUpdateForm.vue";
+import NewsCard from "./__NewsCard.vue";
 
 export default {
   name: "Index",
