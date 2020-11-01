@@ -1,15 +1,16 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 
+console.log(process.env.VUE_APP_apiKey);
 const firebaseApp = firebase.initializeApp({
-  apiKey: "AIzaSyDRqehA2DSfntEBPoStYoukeTR8T2a0sZY",
-  authDomain: "c3-officialsite.firebaseapp.com",
-  databaseURL: "https://c3-officialsite.firebaseio.com",
-  projectId: "c3-officialsite",
-  storageBucket: "c3-officialsite.appspot.com",
-  messagingSenderId: "1054658532963",
-  appId: "1:1054658532963:web:4ea6ccd87cb94615184a56",
-  measurementId: "G-S3HT2Z6MX7"
+  apiKey: process.env.VUE_APP_apiKey,
+  authDomain: process.env.VUE_APP_authDomain,
+  databaseURL: process.env.VUE_APP_databaseURL,
+  projectId: process.env.VUE_APP_projectId,
+  storageBucket: process.env.VUE_APP_storageBucket,
+  messagingSenderId: process.env.VUE_APP_messagingSenderId,
+  appId: process.env.VUE_APP_appIdappId,
+  measurementId: process.env.VUE_APP_measurementId,
 });
 
 export default firebase

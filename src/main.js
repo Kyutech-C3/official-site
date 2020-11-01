@@ -6,6 +6,8 @@ import './plugins/firebase.js'
 
 Vue.config.productionTip = false
 
+require("dotenv").config({ path: __dirname + "../../.env" });
+
 new Vue({
   router,
   store,
