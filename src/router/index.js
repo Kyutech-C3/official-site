@@ -1,5 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+import firebase from 'firebase'
 import Home from "../views/Home.vue";
 import Signup from "../views/Signup.vue";
 import Signin from "../views/Signin.vue";
@@ -32,6 +33,7 @@ const routes = [{
     path: "/news",
     name: "Addnews",
     component: Addnews,
+    meta: { requiresAuth: true }
   },
 ];
 
@@ -39,6 +41,16 @@ const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
   routes,
+});
+
+router.beforeEach(async (to, from, next) => {
+  const requiresAuth = to.matched.some(recode => recode.meta.requiresAuth);
+  console.log(requiresAuth)
+  if (requiresAuth && !(await firebase.getCurrentUser())) {
+    next({ path: "/signin" });
+  } else {
+    next();
+  }
 });
 
 export default router;
