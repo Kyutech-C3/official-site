@@ -1,5 +1,6 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
+import 'firebase/firebase-storage';
 
 const firebaseApp = firebase.initializeApp({
   apiKey: process.env.VUE_APP_apiKey,
@@ -11,6 +12,15 @@ const firebaseApp = firebase.initializeApp({
   appId: process.env.VUE_APP_appIdappId,
   measurementId: process.env.VUE_APP_measurementId,
 });
+
+firebase.getCurrentUser = () => {
+  return new Promise((resolve, reject) => {
+    const unsubscribe = firebase.auth().onAuthStateChanged(user => {
+      unsubscribe()
+      resolve(user);
+    }, reject);
+  });
+};
 
 export default firebase
 export const Newsdb = firebaseApp.firestore().collection('news');

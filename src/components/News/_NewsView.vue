@@ -1,40 +1,33 @@
 <template>
-  <div>
-    <div class="newsIndex">
-      <div class="card" v-for="(news, number) in index" :key="number">
-        <news-card 
-          :title="news.title"
-          :description="news.description"
-          :imageUrl="news.imageURL"
-          :date="news.date"
-          @parent-event="openModal(news)"
-        />
-      </div>
+  <div class="newsIndex">
+    <div class="card" v-for="(news, number) in index" :key="number">
+      <news-card 
+        :title="news.title"
+        :description="news.description"
+        :imageUrl="news.imageURL"
+        :date="news.date"
+      />
     </div>
-    <Modal :index="postItem" ref="modal" />
   </div>
 </template>
 
 <script>
 import firebase from "firebase";
-import Modal from "./_NewsUpdateForm.vue";
 import NewsCard from "./_NewsCard.vue";
 
 export default {
   name: "Index",
+  components: {
+    NewsCard
+  },
   data() {
     return {
-  
+      db: null,
       index: [],
       postItem: "",
     };
   },
   methods: {
-    openModal(item) {
-      this.$refs.modal.showContent = true;
-      this.$refs.modal.data = item;
-      console.log(item);
-    },
     closeModal() {
       this.showContent = false;
     },
@@ -54,22 +47,25 @@ export default {
         });
       });
   },
-  components: {
-    Modal,
-    NewsCard,
-  },
+  // components: {
+  //   NewsCard,
+  // },
 };
 </script>
 
 <style lang="scss" scoped>
 .newsIndex {
-  overflow-x: scroll;
+  overflow-x: auto;
+  overflow-y: hidden;
+  background-color: $brand-color;
+  padding: $content-padding-y $content-padding-x;
   white-space: nowrap;
 }
 .card {
-  white-space: nowrap;
   display: inline-block;
-  margin: 0 10px;
+  margin-left: 15px;
+}
+.card:nth-last-child(0) {
+  margin-right: 15px;
 }
 </style>
-

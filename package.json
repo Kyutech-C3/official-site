@@ -10,6 +10,7 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
+    "@google-cloud/storage": "^5.5.0",
     "algoliasearch": "^4.5.1",
     "core-js": "^3.6.5",
     "dotenv": "^8.2.0",

@@ -1,15 +1,15 @@
 <template>
   <div>
-    <News />
+    <NewsEdit />
   </div>
 </template>
 
 <script>
-import News from "../components/News/News.vue";
+import NewsEdit from "../components/News/NewsEdit.vue";
 
 export default {
   components: {
-    News,
+    NewsEdit,
   },
 };
 </script>
