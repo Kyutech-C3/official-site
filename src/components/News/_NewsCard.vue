@@ -1,19 +1,13 @@
 <template>
   <div class="card">
-    <table>
-      <tr>
-        <article id="img">
-          <img :src="imageUrl" @click="childeEvent" />
-        </article>
-      </tr>
-      <tr>
-        <article id="art">
-          <h2>{{ title }}</h2>
-          <p v-html="description"></p>
-          <p id="time">{{ date }}</p>
-        </article>
-      </tr>
-    </table>
+    <div id="img">
+      <img :src="imageUrl" @click="childeEvent" />
+    </div>
+    <div id="art">
+      <h2>{{ title }}</h2>
+      <p class="description" v-html="description"></p>
+      <p id="time">{{ date }}</p>
+    </div>
   </div>
 </template>
 
@@ -36,55 +30,49 @@ export default {
 
 <style lang="scss" scoped>
 .card {
+  position: relative;
   width: 14rem;
   height: 21rem;
-  background-color: $accent-color;
   border-collapse: separate;
   border-radius: 10px;
+  box-shadow: 2px 2px 2px black;
+  background-color: $base-color;
+  overflow: hidden;
 }
 img {
-  display: block;
-  margin: auto;
-  margin-top: auto;
-  margin-bottom: auto;
-  width: 13.8rem;
-  height: 10.35rem;
-  border-radius: 8px 8px 0 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 #img {
-  background-color: $brand-color;
-  height: 10.35rem;
-  width: 13.8rem;
-  // color: $text-color;
-  border-radius: 8px 8px 0 0;
+  height: 50%;
 }
 #art {
-  background: linear-gradient(135deg, $base-color, $brand-color);
-  height: 10.35rem;
-  width: 13.8rem;
+  //background: linear-gradient(135deg, $base-color, $brand-color);
   // color: $text-color;
+  height: 50%;
   border-radius: 0 0 8px 8px;
+  padding: 6px 17px 0 17px;
 }
 h2 {
   text-align: left;
   margin: 0;
-  padding: 6px 17px 0px;
+  margin-bottom: 0.3rem;
   width: 9rem;
   height: 2rem;
   overflow: hidden;
 }
-p {
+p.description {
+  position: absolute;
   text-align: left;
   margin: 0;
-  padding: 0 17px;
-  width: 11rem;
-  height: 5.8rem;
   overflow: hidden;
 }
 #time {
-  width: 12rem;
-  margin: 0.6rem 0;
+  position: absolute;
+  bottom: 0.6rem;
   text-align: left;
   font-size: 9px;
+  background-color: #fff;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button @click="openForm">新規投稿</button>
+    <button class="newButton" @click="openForm">新規投稿</button>
     <NewsIndex />
     <NewsForm ref="form" />
   </div>
@@ -22,3 +22,10 @@ export default {
   },
 };
 </script>
+<style lang="scss" scoped>
+.newButton {
+  margin: 20px;
+  padding: 1rem;
+  font-weight: bold;
+}
+</style>
