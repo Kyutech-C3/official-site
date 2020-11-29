@@ -2,7 +2,7 @@
   <div id="main">
     <!-- <img alt="Vue logo" src="../assets/logo.png"> -->
     <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-    <p id="title">Contact</p>
+    <section-title>Content</section-title>
     <Button v-model="isActive"></Button>
 
     <div :class="{on: isActive}" id="content">
@@ -36,6 +36,7 @@
 
 <script>
 import Button from '@/components/Contact/_ContactButton.vue'
+import SectionTitle from '../miscs/SectionTitle.vue';
 
 export default{
   name: 'Contact',
@@ -49,7 +50,8 @@ export default{
     }
   },
   components:{
-    Button
+    Button,
+    SectionTitle
   },
 
   methods:{
@@ -78,6 +80,8 @@ export default{
 #main {
   padding: 20px;
   text-align: center;
+  background-color: $brand-color;
+  padding: $content-padding-y $content-padding-x;
 }
 
 #title {

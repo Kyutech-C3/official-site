@@ -31,21 +31,21 @@
 
 
     .media_container {
-        margin: 0 10vw 10vw; /* ‚±‚ê‚¢‚é */
+        margin: 0 10vw 10vw; /* ï¿½ï¿½ï¿½ê‚¢ï¿½ï¿½ */
         position: relative;
 
         overflow: hidden;
         border-radius: $border-radius;
 
-        max-height: 300px; /* video‚Ì‚»‚ê‚æ‚è¬‚³‚­ */
+        max-height: 300px; /* videoï¿½Ì‚ï¿½ï¿½ï¿½ï¿½è¬ï¿½ï¿½ï¿½ï¿½ */
     }
-    @media (min-width: $mobile-width) { /*ƒtƒ@ƒbƒLƒ“ƒ‚ƒoƒCƒ‹*/
+    @media (min-width: $mobile-width) { /*ï¿½tï¿½@ï¿½bï¿½Lï¿½ï¿½ï¿½ï¿½ï¿½oï¿½Cï¿½ï¿½*/
         .media_container {
-            margin: 0 10vw 4rem; /* ‚±‚ê‚¢‚é */
+            margin: 0 10vw 4rem; /* ï¿½ï¿½ï¿½ê‚¢ï¿½ï¿½ */
             position: relative;
             overflow: hidden;
             border-radius: $border-radius;
-            max-height: 300px; /* video‚Ì‚»‚ê‚æ‚è¬‚³‚­ */
+            max-height: 300px; /* videoï¿½Ì‚ï¿½ï¿½ï¿½ï¿½è¬ï¿½ï¿½ï¿½ï¿½ */
         }
     }
 
@@ -57,7 +57,7 @@
             -ms-transform: translate(-50%,-50%);
             -webkit-transform: translate(-50%,-50%);
             font-size: 5vw;
-            color: white; /*•¶š‚Í”’‚É*/
+            color: white; /*ï¿½ï¿½ï¿½ï¿½ï¿½Í”ï¿½ï¿½ï¿½*/
             transform: translate(-50%,-50%);
             margin: 0;
             padding: 0;
@@ -77,7 +77,7 @@
         -ms-transform: translate(-50%,-50%);
         -webkit-transform: translate(-50%,-50%);
         font-size: 3vw;
-        color: white; /*•¶š‚Í”’‚É*/
+        color: white; /*ï¿½ï¿½ï¿½ï¿½ï¿½Í”ï¿½ï¿½ï¿½*/
         transform: translate(-50%,-50%);
         margin: 0;
         padding: 0;
@@ -92,12 +92,12 @@
     }
 
     video {
-        object-fit: cover; /* ‚±‚Ìˆês‚ğ’Ç‰Á‚·‚é‚¾‚¯I */
-        width: 120vw; /* example‚Ì‚»‚ê‚æ‚è‘å‚«‚­ */
-        height: 50vw; /* example‚Ì‚»‚ê‚æ‚è‘å‚«‚­ */
-        margin: -10px; /* ‚±‚ê‚¢‚éH */
+        object-fit: cover; /* ï¿½ï¿½ï¿½Ìˆï¿½sï¿½ï¿½Ç‰ï¿½ï¿½ï¿½ï¿½é‚¾ï¿½ï¿½ï¿½I */
+        width: 120vw; /* exampleï¿½Ì‚ï¿½ï¿½ï¿½ï¿½ï¿½å‚«ï¿½ï¿½ */
+        height: 50vw; /* exampleï¿½Ì‚ï¿½ï¿½ï¿½ï¿½ï¿½å‚«ï¿½ï¿½ */
+        margin: -10px; /* ï¿½ï¿½ï¿½ê‚¢ï¿½ï¿½H */
         border-radius: $border-radius;
-        max-height: 310px; /* example‚Ì‚»‚ê‚æ‚è‘å‚«‚­ */
+        max-height: 310px; /* exampleï¿½Ì‚ï¿½ï¿½ï¿½ï¿½ï¿½å‚«ï¿½ï¿½ */
         filter: brightness(60%) blur(3px);
     }
 

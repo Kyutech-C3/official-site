@@ -57,8 +57,6 @@ export default {
 .newsIndex {
   overflow-x: auto;
   overflow-y: hidden;
-  background-color: $brand-color;
-  padding: $content-padding-y $content-padding-x;
   white-space: nowrap;
 }
 .card {
