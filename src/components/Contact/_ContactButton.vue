@@ -2,7 +2,6 @@
   <div @click="change()" class="button">
     <div id="zoom">
       <p id="form">連絡はこちら</p>
-      <img :class="{on :value}" src="@/assets/na-su.png">
     </div>
   </div>
 </template>
@@ -31,6 +30,7 @@ img.on{
 .button {
   width: 300px;
   margin: 0 auto;
+  padding: 2rem 0;
   cursor: pointer;
   overflow: hidden;
 /*  border: 4px solid; */
