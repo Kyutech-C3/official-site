@@ -1,66 +1,70 @@
 <template>
   <div class="members">
     <SectionTitle>Members</SectionTitle>
-    <div class="leader">
-      <img class="leader_icon" src="../../assets/leader.png">
-      <div class="leader_expression">
-        <div class="leader_name">Syuman.K</div>
-        <div>
-          C3の部長をやっています。<br />
-          3DとBlenderとエッチな女の子が大好きです。
-        </div>
-      </div>
-    </div>
-    <div class="exectives">
-      <div class="exective">
-        <img class="exective_icon" src="../../assets/saba.png">
+    <div class="members_container">
+      <div class="exective" :class="{leader: exective.isLeader}" v-for="exective in exectives" :key="exective.name">
+        <img class="exective_icon" :src="exective.avatar">
         <div class="exective_expression">
-          <div class="exective_name">Saba</div>
-          <div>
-            C3の副部長をやっています。<br />
-            とくになにもかんがえていません。
-          </div>
-        </div>
-      </div>
-      <div class="exective">
-        <img class="exective_icon" src="../../assets/saba.png">
-        <div class="exective_expression">
-          <div class="exective_name">Saba</div>
-          <div>
-            C3の副部長をやっています。<br />
-            とくになにもかんがえていません。
-          </div>
-        </div>
-      </div>
-      <div class="exective">
-        <img class="exective_icon" src="../../assets/saba.png">
-        <div class="exective_expression">
-          <div class="exective_name">Saba</div>
-          <div>
-            C3の副部長をやっています。<br />
-            とくになにもかんがえていません。
-          </div>
-        </div>
-      </div>
-      <div class="exective">
-        <img class="exective_icon" src="../../assets/saba.png">
-        <div class="exective_expression">
-          <div class="exective_name">Saba</div>
-          <div>
-            C3の副部長をやっています。<br />
-            とくになにもかんがえていません。
-          </div>
+          <div class="exective_role">{{ exective.role }}</div>
+          <div class="exective_name">{{ exective.name }}</div>
+          <p>{{ exective.description }}</p>
         </div>
       </div>
     </div>
   </div>
 </template>
 <script>
+/*
+部長
+副部長x2
+鯖缶
+広報
+*/
 import SectionTitle from '../miscs/SectionTitle'
+import leaderAvatar from '../../assets/leader.png'
 export default {
   components: {
     SectionTitle
-  }
+  },
+  data: () => ({
+    exectives: [
+      {
+        isLeader: true,
+        avatar: leaderAvatar,
+        role: '部長',
+        name: 'Syuman.K',
+        description: 'C3の部長をやっています。\n3DとBlenderとエッチな女の子が大好きです。'
+      },
+      {
+        isLeader: false,
+        avatar: leaderAvatar,
+        role: '副部長',
+        name: 'Saba',
+        description: 'C3の副部長をやっています。\n特に何もかんがえていません。'
+      },
+      {
+        isLeader: false,
+        avatar: leaderAvatar,
+        role: '副部長',
+        name: 'Saba',
+        description: 'C3の副部長をやっています。\n特に何もかんがえていません。'
+      },
+      {
+        isLeader: false,
+        avatar: leaderAvatar,
+        role: '副部長',
+        name: 'Saba',
+        description: 'C3の副部長をやっています。\n特に何もかんがえていません。'
+      },
+      {
+        isLeader: false,
+        avatar: leaderAvatar,
+        role: '副部長',
+        name: 'Saba',
+        description: 'C3の副部長をやっています。\n特に何もかんがえていません。'
+      },
+    ]
+  })
 }
 </script>
 <style lang="scss" scoped>
@@ -69,45 +73,31 @@ export default {
   text-align: center;
   background-color: $base-color;
 }
-.leader{
-  margin-bottom: 3rem;
-  background-color: $brand-color;
-  border-radius: $border-radius;
-  padding: 2rem 0;
-}
-.leader_icon {
-  display: inline-block;
-  border-radius: 50%;
-  width: 12rem;
-  margin-right: 3rem;
-  vertical-align: middle;
-}
-.leader_expression {
-  display: inline-block;
-  vertical-align: middle;
-  text-align: left;
-}
-.leader_name {
-  font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-  vertical-align: baseline;
+.members_container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
 }
 .exective {
-  display: inline-block;
-  width: 9rem;
-  margin: 0 1rem;
-  margin-top: 1rem;
-  padding: 1rem;
-  background-color: $brand-color;
-  border-radius: $border-radius;
+  flex-basis: 160px;
+  padding: 30px;
+}
+.leader {
+  flex-basis: 100%;
+}
+.exective_role {
+  font-weight: bold;
 }
 .exective_expression {
   margin-top: 1rem;
 }
 .exective_icon {
-  width: 100%;
   border-radius: 50%;
+  width: 100%;
+}
+.leader .exective_icon {
+  width: 200px;
 }
 .exective_name {
   font-size: 1.6rem;
