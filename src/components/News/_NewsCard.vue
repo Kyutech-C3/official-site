@@ -6,8 +6,8 @@
     <div id="art">
       <h2>{{ title }}</h2>
       <p class="description" v-html="description"></p>
-      <p id="time">{{ date }}</p>
     </div>
+    <p id="time">{{ date }}</p>
   </div>
 </template>
 
@@ -50,9 +50,8 @@ img {
 #art {
   //background: linear-gradient(135deg, $base-color, $brand-color);
   // color: $text-color;
-  height: 50%;
   border-radius: 0 0 8px 8px;
-  padding: 6px 17px 0 17px;
+  padding: 6px 17px 13px 17px;
 }
 h2 {
   text-align: left;
@@ -63,16 +62,16 @@ h2 {
   overflow: hidden;
 }
 p.description {
-  position: absolute;
   text-align: left;
   margin: 0;
   overflow: hidden;
+  white-space: normal;
 }
 #time {
   position: absolute;
   bottom: 0.6rem;
   text-align: left;
   font-size: 9px;
-  background-color: #fff;
+  padding: 6px 17px 0 17px;
 }
 </style>
