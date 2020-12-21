@@ -1,11 +1,19 @@
 <template>
   <div id="app">
     <div class="container">
+      <my-header />
       <router-view/>
     </div>
   </div>
 </template>
-
+<script>
+import Header from '@/components/Header/Header'
+export default {
+  components: {
+    myHeader: Header
+  }
+}
+</script>
 <style lang="scss">
 body {
   margin: 0;

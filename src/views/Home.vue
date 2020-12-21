@@ -1,6 +1,5 @@
 <template>
   <div>
-    <Header />
     <Top />
     <News />
     <Members />
@@ -11,9 +10,7 @@
 </template>
 
 <script>
-
 // import HelloWorld from '@/components/HelloWorld.vue'
-import Header from '@/components/Header/Header'
 import Top from '@/components/Top/Top'
 import News from '@/components/News/News'
 import Members from '@/components/Members/Members'
@@ -23,7 +20,6 @@ import Footer from '@/components/Footer/Footer'
 
 export default {
   components: {
-    Header,
     Top,
     News,
     Members,
