@@ -1,8 +1,13 @@
 <template>
   <div class="header">
     <div class="left_box">
-      <div class="admin_mark" :class="{is_admin: $root.isAdmin}" v-if="$root.currentUser" @click="changeAdminMode">
-        {{ $root.isAdmin ? 'Admin' : 'Preview' }} mode
+      <div class="admin_toolbox" v-if="$root.currentUser" >
+        <div class="admin_mark" :class="{is_admin: $root.isAdmin}" @click="changeAdminMode">
+          {{ $root.isAdmin ? 'Admin' : 'Preview' }} mode
+        </div>
+        <div>
+          <router-link to="signout">Sign Out</router-link>
+        </div>
       </div>
     </div>
     <div class="right_container">
@@ -38,6 +43,17 @@ export default {
   display: flex;
   justify-content: space-between;
   padding: 2rem;
+}
+.admin_toolbox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  div {
+    margin-left: 1em;
+  }
+  div:first-child {
+    margin-left: 0;
+  }
 }
 .admin_mark {
   background-color: $base-color;

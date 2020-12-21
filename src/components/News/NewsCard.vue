@@ -8,9 +8,10 @@
     </div>
     <div id="art">
       <h2>{{ title }}</h2>
-      <p class="description" v-html="description"></p>
+      <p class="description">{{ shortenDescription() }}</p>
     </div>
     <p id="time">{{ date }}</p>
+    <router-link class="kwsk_link" :to="`/news/${id}`">kwsk</router-link>
   </div>
 </template>
 
@@ -18,11 +19,17 @@
 export default {
   name: "NewsCard",
   props: {
+    id: String,
     title: String,
     description: String,
     imageUrl: String,
     date: String,
   },
+  methods: {
+    shortenDescription() {
+      return `${this.description.substring(0, 40)}...`
+    }
+  }
 };
 </script>
 
@@ -38,6 +45,7 @@ export default {
 }
 .editToolBar {
   position: absolute;
+  padding: .5em;
 }
 img {
   width: 100%;
@@ -66,9 +74,15 @@ p.description {
   overflow: hidden;
   white-space: normal;
 }
+.kwsk_link {
+  position: absolute;
+  bottom: .6rem;
+  right: .5rem;
+  text-align: left;
+}
 #time {
   position: absolute;
-  bottom: 0.6rem;
+  bottom: .6rem;
   text-align: left;
   font-size: 9px;
   padding: 6px 17px 0 17px;

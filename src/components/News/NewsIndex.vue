@@ -7,6 +7,7 @@
         </div>
         <div class="card" v-for="(news, number) in index" :key="number">
           <news-card 
+            :id="news.id"
             :title="news.title"
             :description="news.description"
             :imageUrl="news.imageURL"
