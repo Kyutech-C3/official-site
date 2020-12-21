@@ -2,6 +2,7 @@
   <div class="card defaultShadow">
     <div class="editToolBar" v-if="$root.isAdmin">
       <button @click="$emit('edit')" >Edit</button>
+      <button @click="$emit('delete')" >Delete</button>
     </div>
     <div id="img">
       <img :src="imageUrl"/>

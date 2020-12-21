@@ -35,6 +35,26 @@ export default {
       }
       else this.editingNews = news
     },
+    deleteNews(news) {
+        Newsdb.doc(news.id)
+          .delete()
+          .then(() => {
+            this.$notify({
+              group: 'newsEdit',
+              type: 'success',
+              title: '削除成功',
+              text: 'ニュースの削除が成功しました。'
+            })
+          })
+          .catch((e) => {
+            this.$notify({
+              group: 'newsEdit',
+              type: 'error',
+              title: '削除失敗',
+              text: 'ニュースの削除が失敗しました。' + e
+            })
+          })
+    },
     uploadImage(filename, imgfile) {
       const now = Date.now().toString()
       storage

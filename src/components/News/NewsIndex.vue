@@ -13,6 +13,7 @@
             :imageUrl="news.imageURL"
             :date="news.date"
             @edit="editNews(news)"
+            @delete="deleteNews(news)"
           />
         </div>
         <div class="card create_button_card" @click="editNews(null)" v-if="this.$root.isAdmin">
@@ -44,6 +45,10 @@ export default {
     editNews(item) {
       if(this.currentUser === null) return
       this.$refs.newsEdit.editNews(item)
+    },
+    deleteNews(item) {
+      if(this.currentUser === null) return
+      this.$refs.newsEdit.deleteNews(item)
     },
     closeModal() {
       this.showContent = false;
@@ -106,10 +111,10 @@ export default {
   padding: 20px;
   border: solid black 4px;
   border-radius: 50%;
+  cursor: pointer;
 }
 .create_button {
   font-size: 3em;
-  cursor: pointer;
 }
 //Loading
 .loader-wrap {
