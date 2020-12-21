@@ -19,14 +19,14 @@
         </div>
       </div>
     </div>
-    <Modal :index="postItem" ref="modal" />
+    <news-edit ref="newsEdit"/>
   </div>
 </template>
 
 <script>
 import firebase from "firebase";
-import Modal from "@/components/NewsEdit/NewsUpdateForm.vue";
 import NewsCard from "./NewsCard.vue";
+import NewsEdit from "@/components/NewsEdit/NewsEdit"
 
 export default {
   name: "Index",
@@ -42,7 +42,7 @@ export default {
   methods: {
     editNews(item) {
       if(this.currentUser === null) return
-      this.$emit('editNews', item)
+      this.$refs.newsEdit.editNews(item)
     },
     closeModal() {
       this.showContent = false;
@@ -68,8 +68,8 @@ export default {
       });
   },
   components: {
-    Modal,
     NewsCard,
+    NewsEdit
   },
 };
 </script>
