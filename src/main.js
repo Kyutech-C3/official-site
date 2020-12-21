@@ -7,6 +7,7 @@ import './styles/shared.scss'
 import MavonEditor from 'mavon-editor'
 import 'mavon-editor/dist/css/index.css'
 import firebase from 'firebase'
+import Notifications from 'vue-notification'
 
 Vue.config.productionTip = false
 
@@ -14,6 +15,7 @@ Vue.config.productionTip = false
 require("dotenv").config({ path: __dirname + "../../.env" });
 
 Vue.use(MavonEditor)
+Vue.use(Notifications)
 new Vue({
   router,
   store,

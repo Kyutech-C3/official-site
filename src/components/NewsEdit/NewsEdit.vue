@@ -83,8 +83,21 @@ export default {
       }
       try {
         await news.set(this.editingNews)
+        console.log(this.$notify)
+        this.$notify({
+          group: 'newsEdit',
+          type: 'success',
+          title: 'セーブ成功',
+          text: 'ニュースのセーブが成功しました。'
+        })
         console.log("Updated Successfully")
       }catch(e) {
+        this.$notify({
+          group: 'newsEdit',
+          type: 'error',
+          title: 'セーブ失敗',
+          text: 'ニュースのセーブが失敗しました。'
+        })
         console.error(e)
       }
     }

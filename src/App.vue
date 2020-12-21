@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <notifications group="newsEdit" position="top center"/>
     <div class="container">
       <my-header />
       <router-view/>
