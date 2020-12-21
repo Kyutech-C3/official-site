@@ -6,6 +6,7 @@ import Signup from "../views/Signup.vue";
 import Signin from "../views/Signin.vue";
 import Signout from "../views/Signout.vue";
 import NewsEdit from "../views/NewsEdit.vue";
+import NewsView from "../views/NewsView.vue"
 
 Vue.use(VueRouter);
 
@@ -35,6 +36,11 @@ const routes = [{
     component: NewsEdit,
     meta: { requiresAuth: true }
   },
+  {
+    path: "/news/:newsId",
+    name: "NewsView",
+    component: NewsView
+  }
 ];
 
 const router = new VueRouter({

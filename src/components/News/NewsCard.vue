@@ -22,7 +22,7 @@ export default {
   },
   methods: {
     childeEvent() {
-      this.$emit("parent-event");
+      this.$emit("edit");
     },
   },
 };
@@ -56,7 +56,6 @@ h2 {
   text-align: left;
   margin: 0;
   margin-bottom: 0.3rem;
-  width: 9rem;
   height: 2rem;
   overflow: hidden;
 }
