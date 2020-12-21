@@ -10,18 +10,18 @@
         required
       />
     </div>
-    <mavon-editor language="ja" v-model="editingNews.markdown" @change="generateHTML" @save="save"/>
+    <mavon-editor ref="mavonEditor" language="ja" v-model="editingNews.markdown" @change="generateHTML" @imgAdd="uploadImage" @save="save"/>
   </div>
 </template>
 <script>
-import MavonEditor from "mavon-editor";
+import { mavonEditor } from "mavon-editor";
 import { Newsdb } from "@/plugins/firebase.js";
-//import { storage } from "@/plugins/firestorage.js";
+import { storage } from "@/plugins/firestorage.js";
 import "firebase/firestore";
 
 export default {
   components: {
-    'mavon-editor': MavonEditor.mavonEditor
+    'mavon-editor': mavonEditor
   },
   data: () => ({
     editingNews: null
@@ -33,6 +33,26 @@ export default {
         id: null
       }
       else this.editingNews = news
+    },
+    uploadImage(filename, imgfile) {
+      const now = Date.now().toString()
+      storage
+        .ref()
+        .child(`news/${this.editingNews.id}-${now}-${filename}`)
+        .put(imgfile)
+        .then((snapShot) => {
+          return snapShot
+            .ref
+            .getDownloadURL()
+        })
+        .then((url) => {
+          console.log(mavonEditor)
+          console.log(url)
+          this.$refs.mavonEditor.$img2Url(filename, url)
+        })
+        .catch((e) => {
+          alert(`Error on uploading image ${filename}: ${e}`)
+        })
     },
     extractTitle(html) {
       const div = document.createElement('div')
@@ -48,6 +68,7 @@ export default {
       return div.textContent || div.innerText || ""
     },
     generateHTML(markdown, html) {
+      console.log(html)
       this.editingNews.html = html
       this.editingNews.description = this.stripHTMLTags(this.editingNews.html)
       this.editingNews.title = this.extractTitle(html)

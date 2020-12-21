@@ -4,7 +4,7 @@
       <p>投稿日: {{ news.date }}</p>
     </section>
     <section class="news_content">
-      <div ref="root" class="news_markdown"></div>
+      <div ref="htmlContent" class="news_markdown"></div>
     </section>
   </div>
 </template>
@@ -35,7 +35,7 @@ export default {
       .get()
       .then((doc) => {
         self.news = doc.data()
-        self.$refs.root.innerHTML = self.news.html
+        self.$refs.htmlContent.innerHTML = self.news.html
       })
   },
 };
