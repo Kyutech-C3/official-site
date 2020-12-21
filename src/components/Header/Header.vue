@@ -1,7 +1,9 @@
 <template>
   <div class="header">
     <div class="left_box">
-      <div class="admin_mark" v-if="currentUser">Admin mode</div>
+      <div class="admin_mark" :class="{is_admin: $root.isAdmin}" v-if="$root.currentUser" @click="changeAdminMode">
+        {{ $root.isAdmin ? 'Admin' : 'Preview' }} mode
+      </div>
     </div>
     <div class="right_container">
       <div class="links_container">
@@ -19,19 +21,15 @@
   </div>
 </template>
 <script>
-import firebase from 'firebase'
 export default {
   name: 'Header',
   data: () => ({
     currentUser: null
   }),
-  created() {
-    let self = this
-    console.info('Login check')
-    firebase.auth().onAuthStateChanged((user) => {
-      console.info(user)
-      self.currentUser = user
-    })
+  methods: {
+    changeAdminMode() {
+      this.$root.isAdmin = !this.$root.isAdmin
+    }
   }
 }
 </script>
@@ -42,10 +40,16 @@ export default {
   padding: 2rem;
 }
 .admin_mark {
+  background-color: $base-color;
+  color: $admin-color;
+  padding: 0.5rem 1rem;
+  border: solid 2px $admin-color;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.is_admin {
   background-color: $admin-color;
   color: $base-color;
-  padding: 0.5rem 1rem;
-  border-radius: 10px;
 }
 .links_container {
   cursor: pointer;

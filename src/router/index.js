@@ -5,8 +5,7 @@ import Home from "../views/Home.vue";
 import Signup from "../views/Signup.vue";
 import Signin from "../views/Signin.vue";
 import Signout from "../views/Signout.vue";
-import NewsEdit from "../views/NewsEdit.vue";
-import NewsView from "../views/NewsView.vue"
+import NewsView from "../views/NewsView.vue";
 
 Vue.use(VueRouter);
 
@@ -29,12 +28,6 @@ const routes = [{
     path: "/signout",
     name: "Signout",
     component: Signout,
-  },
-  {
-    path: "/news",
-    name: "NewsEdit",
-    component: NewsEdit,
-    meta: { requiresAuth: true }
   },
   {
     path: "/news/:newsId",

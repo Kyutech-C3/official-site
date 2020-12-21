@@ -1,10 +1,10 @@
 <template>
   <div>
     <div class="newsIndex">
-      <div class="loader-wrap" v-show="loading">
-        <div class="loader">Loading...</div>
-      </div>
       <div class="card_container">
+        <div class="loader-wrap" v-if="loading">
+          <div class="loader">Loading...</div>
+        </div>
         <div class="card" v-for="(news, number) in index" :key="number">
           <news-card 
             :title="news.title"
@@ -14,12 +14,12 @@
             @edit="editNews(news)"
           />
         </div>
-        <div class="card create_button_card" @click="editNews(null)">
+        <div class="card create_button_card" @click="editNews(null)" v-if="this.$root.isAdmin">
           <div class="create_button">+</div>
         </div>
       </div>
     </div>
-    <news-edit ref="newsEdit"/>
+    <news-edit ref="newsEdit" v-if="this.$root.isAdmin"/>
   </div>
 </template>
 
@@ -89,10 +89,10 @@ export default {
   align-items: center;
 }
 .card {
-  margin-left: 15px;
+  margin-right: 30px;
 }
-.card:first-child {
-  margin-right: 15px;
+.card:last-child {
+  margin-right: 0;
 }
 .create_button_card {
   display: flex;

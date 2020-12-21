@@ -1,7 +1,10 @@
 <template>
   <div class="card defaultShadow">
+    <div class="editToolBar" v-if="$root.isAdmin">
+      <button @click="$emit('edit')" >Edit</button>
+    </div>
     <div id="img">
-      <img :src="imageUrl" @click="childeEvent" />
+      <img :src="imageUrl"/>
     </div>
     <div id="art">
       <h2>{{ title }}</h2>
@@ -20,11 +23,6 @@ export default {
     imageUrl: String,
     date: String,
   },
-  methods: {
-    childeEvent() {
-      this.$emit("edit");
-    },
-  },
 };
 </script>
 
@@ -37,6 +35,9 @@ export default {
   border-radius: 10px;
   background-color: $base-color;
   overflow: hidden;
+}
+.editToolBar {
+  position: absolute;
 }
 img {
   width: 100%;
