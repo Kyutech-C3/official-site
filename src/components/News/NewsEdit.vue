@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import NewsForm from "./_NewsForm.vue";
-import NewsIndex from "./_NewsIndex.vue";
+import NewsForm from "./NewsForm.vue";
+import NewsIndex from "./NewsIndex.vue";
 
 export default {
   components: {

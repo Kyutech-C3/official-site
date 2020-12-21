@@ -22,7 +22,7 @@
 
 <script>
 import firebase from "firebase";
-import Modal from "./_NewsUpdateForm.vue";
+import Modal from "./NewsUpdateForm.vue";
 import NewsCard from "./NewsCard.vue";
 
 export default {
@@ -32,10 +32,13 @@ export default {
       loading: true,
       index: [],
       postItem: "",
+      db: null,
+      currentUser: null
     };
   },
   methods: {
     openModal(item) {
+      if(this.currentUser === null) return
       this.$refs.modal.showContent = true;
       this.$refs.modal.data = item;
       console.log(item);
@@ -46,6 +49,9 @@ export default {
   },
   created: function () {
     this.db = firebase.firestore();
+    firebase.auth().onAuthStateChanged((user) => {
+      this.currentUser = user
+    })
     var _this = this;
     this.db
       .collection("news")
@@ -83,7 +89,7 @@ export default {
 .card {
   margin-left: 15px;
 }
-.card:nth-last-child(0) {
+.card:first-child {
   margin-right: 15px;
 }
 
