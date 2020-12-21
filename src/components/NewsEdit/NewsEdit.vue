@@ -1,13 +1,16 @@
 <template>
-  <div>
-    <input
-      type="date"
-      autocomplete="off"
-      v-model="editingNews.date"
-      v-if="editingNews"
-      required
-    />
-    <mavon-editor language="ja" v-if="editingNews" v-model="editingNews.markdown" @change="generateHTML" @save="save"/>
+  <div class="news_edit defaultShadow" v-if="editingNews" >
+    <div class="date_edit">
+      <label>投稿日</label>
+      <input
+        type="date"
+        autocomplete="off"
+        v-model="editingNews.date"
+        v-if="editingNews"
+        required
+      />
+    </div>
+    <mavon-editor language="ja" v-model="editingNews.markdown" @change="generateHTML" @save="save"/>
   </div>
 </template>
 <script>
@@ -67,3 +70,16 @@ export default {
   },
 };
 </script>
+<style lang="scss" scoped>
+.news_edit {
+  padding: 1rem;
+  background-color: $base-color;
+  border-radius: $border-radius;
+}
+.date_edit {
+  padding: 1rem;
+}
+.date_edit label {
+  margin-right: 1rem;
+}
+</style>
