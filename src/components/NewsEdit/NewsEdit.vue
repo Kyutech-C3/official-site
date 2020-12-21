@@ -10,7 +10,7 @@
         required
       />
     </div>
-    <mavon-editor ref="mavonEditor" language="ja" v-model="editingNews.markdown" @change="generateHTML" @imgAdd="uploadImage" @save="save"/>
+    <mavon-editor ref="mavonEditor" language="ja" v-model="editingNews.markdown" @change="change" @imgAdd="uploadImage" @save="save"/>
   </div>
 </template>
 <script>
@@ -30,7 +30,8 @@ export default {
     editNews(news) {
       console.log(news)
       if(news === null) this.editingNews = {
-        id: null
+        id: null,
+        date: undefined
       }
       else this.editingNews = news
     },
@@ -49,15 +50,24 @@ export default {
           console.log(mavonEditor)
           console.log(url)
           this.$refs.mavonEditor.$img2Url(filename, url)
+          this.editingNews.imageURL = this.extractJacket()
         })
         .catch((e) => {
           alert(`Error on uploading image ${filename}: ${e}`)
         })
     },
+    extractJacket() {
+      const div = document.createElement('div')
+      div.innerHTML = this.editingNews.html
+      const firstImgTag = div.getElementsByTagName('img')[0]
+      if(firstImgTag === undefined) return undefined
+      return firstImgTag.src
+    },
     extractTitle(html) {
       const div = document.createElement('div')
       div.innerHTML = html
-      const firstH1Elem = div.querySelector('h1')
+      const firstH1Elem = div.getElementsByTagName('h1')[0]
+      if(firstH1Elem === undefined) return undefined
       return firstH1Elem.textContent || firstH1Elem.innerText || ""
     },
     stripHTMLTags(html) {
@@ -67,23 +77,21 @@ export default {
       if(firstH1Elem !== null) firstH1Elem.remove()
       return div.textContent || div.innerText || ""
     },
-    generateHTML(markdown, html) {
-      console.log(html)
+    change(markdown, html) {
       this.editingNews.html = html
       this.editingNews.description = this.stripHTMLTags(this.editingNews.html)
       this.editingNews.title = this.extractTitle(html)
-      console.log(this.editingNews)
     },
     async save() {
       let news
       if(this.editingNews.id === null) {
         news = Newsdb.doc()
+        this.editingNews.id = news.id
       } else {
         news = Newsdb.doc(this.editingNews.id)
       }
       try {
         await news.set(this.editingNews)
-        console.log(this.$notify)
         this.$notify({
           group: 'newsEdit',
           type: 'success',
@@ -96,7 +104,7 @@ export default {
           group: 'newsEdit',
           type: 'error',
           title: 'セーブ失敗',
-          text: 'ニュースのセーブが失敗しました。'
+          text: 'ニュースのセーブが失敗しました。' + e
         })
         console.error(e)
       }

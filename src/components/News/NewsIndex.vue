@@ -58,6 +58,7 @@ export default {
     this.db
       .collection("news")
       .orderBy("date", "desc")
+      .limit(4)
       .onSnapshot(function (querySnapshot) {
         _this.index = [];
         querySnapshot.forEach(function (doc) {
@@ -65,6 +66,7 @@ export default {
           data.id = doc.id;
           _this.index.push(data);
         });
+        console.log(_this.index)
         _this.loading = false;
       });
   },
