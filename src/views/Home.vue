@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div>
     <Header />
     <Top />
     <News />
@@ -33,15 +33,3 @@ export default {
   }
 }
 </script>
-<style lang="scss" scoped>
-.container {
-  background-color: $base-color;
-}
-@media screen and (min-width: $max-width) {
-  .container {
-    margin-left: 50%;
-    transform: translateX(-50%);
-    width: $max-width;
-  }
-}
-</style>
