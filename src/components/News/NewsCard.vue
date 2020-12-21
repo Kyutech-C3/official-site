@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="card defaultShadow">
     <div id="img">
       <img :src="imageUrl" @click="childeEvent" />
     </div>
@@ -35,7 +35,6 @@ export default {
   height: 21rem;
   border-collapse: separate;
   border-radius: 10px;
-  box-shadow: 2px 2px 2px black;
   background-color: $base-color;
   overflow: hidden;
 }

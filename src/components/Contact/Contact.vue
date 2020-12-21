@@ -1,11 +1,10 @@
 <template>
   <div id="main">
-    <!-- <img alt="Vue logo" src="../assets/logo.png"> -->
-    <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
     <section-title>Content</section-title>
     <Button v-model="isActive"></Button>
-
-    <div :class="{on: isActive}" id="content">
+    <div :class="{on: isActive}" class="modalBackground" @click="closeModal"></div>
+    <div :class="{on: isActive}" class="modal defaultDarkShadow" id="content">
+      <h3>お問い合わせ</h3>
       <form name="Form" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSf3EvzAo-J6GaAaqs1b96CKOl-W7-j55ZMPAaADcLS3PXNyyw/formResponse" target="dummyIframe" @submit="fvalidate">
         <table>
           <tr>
@@ -29,8 +28,6 @@
 
       <div id="thxMessage" :class="{Fon: formAccept}">お問い合わせありがとうございました。</div>
     </div>
-
-
   </div>
 </template>
 
@@ -55,7 +52,6 @@ export default{
   },
 
   methods:{
-
     fvalidate () {
       if (this.fname && this.mail && this.msg) {
 
@@ -64,12 +60,16 @@ export default{
 
           setTimeout(() => {
             this.formAccept = false;
+            this.isActive = false;
           }, 3000);
         }
         return true;
       } else {
         return false;
       }
+    },
+    closeModal() {
+      this.isActive = false
     }
   }
 }
@@ -88,20 +88,33 @@ export default{
   text-decoration: underline;
 }
 
-#content {
 
-  margin-top: 10px;
-  height: 0;
-  transition: 1s;
-  overflow: hidden;
-/*  border-radius: $border-radius; */
-  background-color: white;
+.modalBackground {
+  display: none;
+  position: fixed;
+  top: 0;left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #323232aa;
+  backdrop-filter: blur(10px);
 }
 
-#content.on{
-  height: auto;
-  padding: 20px;
+.modal {
+  display: none;
+  position: fixed;
+  padding: 3rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ffffff;
+  background-color: #323232;
+  border-radius: $border-radius;
 }
+
+.on {
+  display: block;
+}
+
 
 #thxMessage {
   margin-top: 10px;
@@ -124,28 +137,4 @@ table {
 .textbox {
   text-align: right;
 }
-
-@media (min-width: 600px) {
-  #content {
-    width: 500px;
-    margin: 0 auto;
-    margin-top: 20px;
-  }
-
-  .input {
-    width: 200px;
-    height: 30px;
-  }
-
-  table {
-    font-size: 1.2rem;
-  }
-}
-
-@media (max-width: 599px) {
-  #content {
-    margin: 20px 5px auto;
-  }
-}
-
 </style>

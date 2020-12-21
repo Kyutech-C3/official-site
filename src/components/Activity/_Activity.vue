@@ -1,8 +1,5 @@
-
-
 <template>
-    <div class="media_container">
-
+    <div class="media_container defaultShadow">
         <div>
             <video muted autoplay loop name="media">
                 <source :src="movie" type="video/webm">
@@ -31,7 +28,7 @@
 
 
     .media_container {
-        margin: 0 10vw 10vw; /* ���ꂢ�� */
+        margin: 5rem 0; /* ���ꂢ�� */
         position: relative;
 
         overflow: hidden;
@@ -39,9 +36,9 @@
 
         max-height: 300px; /* video�̂����菬���� */
     }
+
     @media (min-width: $mobile-width) { /*�t�@�b�L�����o�C��*/
         .media_container {
-            margin: 0 10vw 4rem; /* ���ꂢ�� */
             position: relative;
             overflow: hidden;
             border-radius: $border-radius;
@@ -54,41 +51,27 @@
             position: absolute;
             top: 30%;
             left: 50%;
+            font-size: 3rem;
             -ms-transform: translate(-50%,-50%);
             -webkit-transform: translate(-50%,-50%);
-            font-size: 5vw;
             color: white; /*�����͔���*/
             transform: translate(-50%,-50%);
             margin: 0;
             padding: 0;
         }
 
-
-    @media (min-width: 1100px) {
-        .xtex {
-            font-size: 52px;
-        }
-    }
-
     .ztex {
         position: absolute;
         top: 60%;
         left: 50%;
+        font-size: 1.4rem;
         -ms-transform: translate(-50%,-50%);
         -webkit-transform: translate(-50%,-50%);
-        font-size: 3vw;
         color: white; /*�����͔���*/
         transform: translate(-50%,-50%);
         margin: 0;
         padding: 0;
         width: 50vw;
-        margin-top: 2vw;
-    }
-
-    @media (min-width: 1100px) {
-        .ztex {
-            font-size: 24px;
-        }
     }
 
     video {

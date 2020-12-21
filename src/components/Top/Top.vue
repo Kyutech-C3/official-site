@@ -1,6 +1,6 @@
 <template>
     <div class="top">
-        <img src="@/assets/C3logo.png" id="C3logo" class="C3logo C3logo-animate"/>
+        <img src="@/assets/C3logo.png" id="C3logo" class="C3logo C3logo-animate defaultDropShadow"/>
         <h1>{{title}}</h1>
         <p>{{discription}}</p>
     </div>
@@ -12,7 +12,11 @@ export default {
     data(){
         return{
             title: "C3 ",
-            discription: "めっちゃ楽しい部活！基本的に光回線を開通させる必要があります。フレッツやauひかり、nuro光などを契約しましょう。サーバーはネット上に情報公開するシステムなので、プライベートIPアドレスではなくグローバルIPアドレスというものが必要です。「よく分からない」という場合は、プロバイダなどに聞いてグローバルIPの有無とサーバーに運用できるかの是非を確認しましょう。", 
+            discription: 
+                `
+                九工大のサークル、C3です。
+                Unityを使ってゲームを作ったり、Webの開発、Blenderで3Dモデリングなど、コンピュータを使って色々な創作活動を行っているサークルです。\n
+                `, 
         }
     },
     mounted(){
@@ -79,6 +83,17 @@ p{
     margin-top: 50px;
     padding:0px;
     border : solid 0px;
+}
+.top h1 {
+    font-size: 4em;
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 0;
+}
+.top p {
+    display: inline-block;
+    margin: 1rem 0;
+    white-space: pre-line;
+    word-wrap: break-word;
 }
 
 </style>

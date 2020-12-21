@@ -16,7 +16,7 @@
 
 <script>
 import firebase from "firebase";
-import NewsCard from "./_NewsCard.vue";
+import NewsCard from "./NewsCard.vue";
 
 export default {
   name: "Index",

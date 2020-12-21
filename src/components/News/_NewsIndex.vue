@@ -4,14 +4,16 @@
       <div class="loader-wrap" v-show="loading">
         <div class="loader">Loading...</div>
       </div>
-      <div class="card" v-for="(news, number) in index" :key="number">
-        <news-card 
-          :title="news.title"
-          :description="news.description"
-          :imageUrl="news.imageURL"
-          :date="news.date"
-          @parent-event="openModal(news)"
-        />
+      <div class="card_container">
+        <div class="card" v-for="(news, number) in index" :key="number">
+          <news-card 
+            :title="news.title"
+            :description="news.description"
+            :imageUrl="news.imageURL"
+            :date="news.date"
+            @parent-event="openModal(news)"
+          />
+        </div>
       </div>
     </div>
     <Modal :index="postItem" ref="modal" />
@@ -21,7 +23,7 @@
 <script>
 import firebase from "firebase";
 import Modal from "./_NewsUpdateForm.vue";
-import NewsCard from "./_NewsCard.vue";
+import NewsCard from "./NewsCard.vue";
 
 export default {
   name: "Index",
@@ -73,8 +75,12 @@ export default {
   padding: $content-padding-y $content-padding-x;
   white-space: nowrap;
 }
+.card_container {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+}
 .card {
-  display: inline-block;
   margin-left: 15px;
 }
 .card:nth-last-child(0) {

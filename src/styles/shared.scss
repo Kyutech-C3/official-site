@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,700;0,900;1,700;1,900&display=swap');
+.defaultShadow {
+    box-shadow: 3px 3px 10px grey;
+}
+.defaultDarkShadow {
+    filter: drop-shadow(3px 3px 10px #111);
+}
+.defaultDropShadow {
+    filter: drop-shadow(3px 3px 10px grey);
+}

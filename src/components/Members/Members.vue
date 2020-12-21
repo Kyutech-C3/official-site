@@ -3,7 +3,7 @@
     <SectionTitle>Members</SectionTitle>
     <div class="members_container">
       <div class="exective" :class="{leader: exective.isLeader}" v-for="exective in exectives" :key="exective.name">
-        <img class="exective_icon" :src="exective.avatar">
+        <img class="exective_icon defaultShadow" :src="exective.avatar">
         <div class="exective_expression">
           <div class="exective_role">{{ exective.role }}</div>
           <div class="exective_name">{{ exective.name }}</div>
@@ -22,6 +22,7 @@
 */
 import SectionTitle from '../miscs/SectionTitle'
 import leaderAvatar from '../../assets/leader.png'
+import sabaAvatar from '../../assets/saba.png'
 export default {
   components: {
     SectionTitle
@@ -37,7 +38,7 @@ export default {
       },
       {
         isLeader: false,
-        avatar: leaderAvatar,
+        avatar: sabaAvatar,
         role: '副部長',
         name: 'Saba',
         description: 'C3の副部長をやっています。\n特に何もかんがえていません。'

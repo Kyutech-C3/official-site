@@ -1,5 +1,5 @@
 <template>
-  <div @click="change()" class="button">
+  <div @click="change()" class="button defaultShadow">
     <div id="zoom">
       <p id="form">連絡はこちら</p>
     </div>
@@ -13,7 +13,7 @@ export default{
     change () {
       this.$emit('input', !this.value);
     }
-  }
+  },
 }
 </script>
 
@@ -39,7 +39,6 @@ img.on{
   font-size: 1.2rem;
   color: $brand-color;
   background-color: #702f0c;
-  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, .5);
 }
 
 #zoom {
