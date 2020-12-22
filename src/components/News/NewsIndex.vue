@@ -1,29 +1,34 @@
 <template>
   <div>
     <div class="newsIndex">
-      <div class="loader-wrap" v-show="loading">
-        <div class="loader">Loading...</div>
-      </div>
       <div class="card_container">
+        <div class="loader-wrap" v-if="loading">
+          <div class="loader">Loading...</div>
+        </div>
         <div class="card" v-for="(news, number) in index" :key="number">
           <news-card 
+            :id="news.id"
             :title="news.title"
             :description="news.description"
             :imageUrl="news.imageURL"
             :date="news.date"
-            @parent-event="openModal(news)"
+            @edit="editNews(news)"
+            @delete="deleteNews(news)"
           />
+        </div>
+        <div class="card create_button_card" @click="editNews(null)" v-if="this.$root.isAdmin">
+          <div class="create_button">+</div>
         </div>
       </div>
     </div>
-    <Modal :index="postItem" ref="modal" />
+    <news-edit ref="newsEdit" v-if="this.$root.isAdmin"/>
   </div>
 </template>
 
 <script>
 import firebase from "firebase";
-import Modal from "./_NewsUpdateForm.vue";
 import NewsCard from "./NewsCard.vue";
+import NewsEdit from "@/components/NewsEdit/NewsEdit"
 
 export default {
   name: "Index",
@@ -32,13 +37,18 @@ export default {
       loading: true,
       index: [],
       postItem: "",
+      db: null,
+      currentUser: null
     };
   },
   methods: {
-    openModal(item) {
-      this.$refs.modal.showContent = true;
-      this.$refs.modal.data = item;
-      console.log(item);
+    editNews(item) {
+      if(this.currentUser === null) return
+      this.$refs.newsEdit.editNews(item)
+    },
+    deleteNews(item) {
+      if(this.currentUser === null) return
+      this.$refs.newsEdit.deleteNews(item)
     },
     closeModal() {
       this.showContent = false;
@@ -46,10 +56,14 @@ export default {
   },
   created: function () {
     this.db = firebase.firestore();
+    firebase.auth().onAuthStateChanged((user) => {
+      this.currentUser = user
+    })
     var _this = this;
     this.db
       .collection("news")
       .orderBy("date", "desc")
+      .limit(4)
       .onSnapshot(function (querySnapshot) {
         _this.index = [];
         querySnapshot.forEach(function (doc) {
@@ -57,12 +71,13 @@ export default {
           data.id = doc.id;
           _this.index.push(data);
         });
+        console.log(_this.index)
         _this.loading = false;
       });
   },
   components: {
-    Modal,
     NewsCard,
+    NewsEdit
   },
 };
 </script>
@@ -79,14 +94,28 @@ export default {
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
+  align-items: center;
 }
 .card {
-  margin-left: 15px;
+  margin-right: 30px;
 }
-.card:nth-last-child(0) {
-  margin-right: 15px;
+.card:last-child {
+  margin-right: 0;
 }
-
+.create_button_card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1rem;
+  height: 1rem;
+  padding: 20px;
+  border: solid black 4px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.create_button {
+  font-size: 3em;
+}
 //Loading
 .loader-wrap {
   align-items: center;

@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import NewsView from "./_NewsView.vue";
+import NewsView from "./NewsIndex.vue";
 import SectionTitle from "../miscs/SectionTitle";
 
 export default {
