@@ -12,7 +12,7 @@
     </div>
     <div class="right_container">
       <div class="links_container">
-        <a href="http://abehiroshi.la.coocan.jp/">
+        <a href="/">
           <img alt="C3 logo" src="../../assets/C3icon.png" width="30" hspace="4" class="defaultDropShadow">
         </a>
         <a href="https://twitter.com/c3_kyutech">
