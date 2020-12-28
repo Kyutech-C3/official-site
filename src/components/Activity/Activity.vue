@@ -11,7 +11,7 @@
 <script>
     import img1 from '../../assets/web.mp4';
     import img2 from '../../assets/unity.mp4';
-    import img3 from '../../assets/sample3.mp4';
+    import img3 from '../../assets/webCG.mp4';
     import ActivityCard from "./_Activity.vue";
     import SectionTitle from "../miscs/SectionTitle";
 
