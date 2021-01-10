@@ -31,8 +31,13 @@ export default {
       return `${this.description.substring(0, 40)}...`
     }
   }
-}; </script> <style lang="scss" scoped> .card { position: relative;
-   width: 14rem;
+}; 
+</script> 
+
+<style lang="scss" scoped> 
+.card { 
+  position: relative;
+  width: 14rem;
   height: 21rem;
   border-collapse: separate;
   border-radius: 10px;

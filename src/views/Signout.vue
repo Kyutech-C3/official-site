@@ -1,21 +1,22 @@
 <template>
   <div>
-    <h1>SING OUT</h1>
-    <button @click="singout">Sing out Now!!</button>
+    <h1>SIGN OUT</h1>
+    <button @click="signout">Sign out Now!!</button>
   </div>
 </template>
 
 <script>
 import firebase from "firebase";
 export default {
-  name: "singout",
+  name: "signout",
   methods: {
-    singout() {
+    signout() {
       firebase
         .auth()
         .signOut()
         .then(() => {
           alert("Logout!");
+          this.$router.push('/')
         })
         .catch((error) => {
           alert(error);

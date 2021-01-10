@@ -93,8 +93,8 @@ export default {
 .card_container {
   display: flex;
   flex-wrap: nowrap;
-  justify-content: center;
-  align-items: center;
+  // justify-content: center;
+  // align-items: center;
 }
 .card {
   margin-right: 30px;
@@ -118,7 +118,7 @@ export default {
 }
 //Loading
 .loader-wrap {
-  align-items: center;
+  margin: auto;
 }
 
 .loader,
@@ -147,7 +147,6 @@ export default {
 .loader:before,
 .loader:after {
   content: '';
-  position: absolute;
   top: 0;
 }
 .loader:before {
