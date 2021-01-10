@@ -94,7 +94,7 @@ export default {
   display: flex;
   flex-wrap: nowrap;
   // justify-content: center;
-  // align-items: center;
+  align-items: center;
 }
 .card {
   margin-right: 30px;
