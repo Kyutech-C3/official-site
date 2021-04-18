@@ -6,6 +6,7 @@ import Signup from "../views/Signup.vue";
 import Signin from "../views/Signin.vue";
 import Signout from "../views/Signout.vue";
 import NewsView from "../views/NewsView.vue";
+import FormRedirect from "../views/FormRedirect.vue";
 
 Vue.use(VueRouter);
 
@@ -33,6 +34,11 @@ const routes = [{
     path: "/news/:newsId",
     name: "NewsView",
     component: NewsView
+  },
+  {
+    path: "/form",
+    name: "FormRedirect",
+    component: FormRedirect
   }
 ];
 
