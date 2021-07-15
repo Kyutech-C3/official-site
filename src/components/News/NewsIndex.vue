@@ -48,7 +48,8 @@ export default {
     },
     deleteNews(item) {
       if(this.currentUser === null) return
-      this.$refs.newsEdit.deleteNews(item)
+      if(confirm('本当に削除しますか？'))
+        this.$refs.newsEdit.deleteNews(item)
     },
     closeModal() {
       this.showContent = false;
