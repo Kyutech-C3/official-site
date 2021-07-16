@@ -102,6 +102,32 @@ export default {
       this.editingNews.description = this.stripHTMLTags(this.editingNews.html)
       this.editingNews.title = this.extractTitle(html)
     },
+    validate() {
+      // 投稿日
+      if(this.editingNews.date === undefined) {
+        this.$notify({
+          group: 'newsEdit',
+          type: 'error',
+          title: 'セーブ失敗',
+          text: '投稿日を入力してください！'
+        }) 
+
+        return false
+      }
+
+      // タイトル
+      if(this.editingNews.title === undefined) {
+        this.$notify({
+          group: 'newsEdit',
+          type: 'error',
+          title: 'セーブ失敗',
+          text: 'タイトルの見出し（# タイトル）を一つ追加してください！'
+        })
+        
+        return false
+      }
+      return true
+    },
     async save() {
       let news
       if(this.editingNews.id === null) {
@@ -110,6 +136,7 @@ export default {
       } else {
         news = Newsdb.doc(this.editingNews.id)
       }
+      if(!this.validate()) return
       try {
         await news.set(this.editingNews)
         this.$notify({
