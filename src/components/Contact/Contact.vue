@@ -1,6 +1,6 @@
 <template>
   <div id="main">
-    <section-title>Content</section-title>
+    <section-title>Contact</section-title>
     <Button v-model="isActive"></Button>
     <div :class="{on: isActive}" class="modalBackground" @click="closeModal"></div>
     <div :class="{on: isActive}" class="modal defaultDarkShadow" id="content">
